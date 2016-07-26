@@ -8,8 +8,6 @@
  */
 
 #include "SEngine.h"
-#include "SDL.h"
-#include <cstdio>
 
 int
 main (int argc, char **argv)
@@ -18,8 +16,7 @@ main (int argc, char **argv)
     
     if ( ! engine.init() )
     {
-        fprintf(stderr, "ERROR!! Can't initialize engine: %s\n",
-                engine.getErrorStr());
+        engine.showErrorMessage("Engine init error", engine.getErrorStr());
         return 1;
     }
     

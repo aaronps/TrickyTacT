@@ -10,48 +10,61 @@
 #include "SSurface.h"
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SVideo.h"
+#include "stdio.h"
 
 SSurface::SSurface(const char *filename)
 {
-    _surface = 0;
+    _texture = 0;
     loadImage(filename);
+}
+
+SSurface::SSurface(SDL_Surface* s)
+{
+    width = s->w;
+    height = s->h;
+    _texture = SDL_CreateTextureFromSurface(SVideo::_renderer, s);
+    SDL_FreeSurface(s);
 }
 
 SSurface::~SSurface()
 {
-    if ( _surface )
-        SDL_FreeSurface(_surface);
-    _surface = 0;
+    if ( _texture )
+        SDL_DestroyTexture(_texture);
+    _texture = 0;
 }
 
 void
 SSurface::loadImage(const char * filename)
 {
-    if ( _surface )
-        SDL_FreeSurface(_surface);
+    if ( _texture )
+        SDL_DestroyTexture(_texture);
     
-    _surface = IMG_Load(filename);
+    _texture = 0;
+    SDL_Surface * s = IMG_Load(filename);
+    if ( s )
+    {
+        width = s->w;
+        height = s->h;
+        _texture = SDL_CreateTextureFromSurface(SVideo::_renderer, s);
+        SDL_FreeSurface(s);
+    }
+    else
+    {
+        printf("Error loading image '%s'\n", filename);
+    }
 }
 
 void
 SSurface::optimizeSurface()
 {
-    if ( _surface )
-    {
-        SDL_Surface * t = SDL_DisplayFormat(_surface);
-        if ( t )
-        {
-            SDL_FreeSurface(_surface);
-            _surface = t;
-        }
-    }
-}
-
-void
-SSurface::blitFrom(SSurface &from, int x, int y)
-{
-    if ( ! _surface )
-        return;
-    SDL_Rect r = {x,y,0,0};
-    SDL_BlitSurface(from._surface,0,_surface,&r);
+//    if ( _surface )
+//    {
+//        SDL_Surface * t = SDL_DisplayFormat(_surface);
+//        if ( t )
+//        {
+//            SDL_FreeSurface(_surface);
+//            _surface = t;
+//        }
+//    }
 }

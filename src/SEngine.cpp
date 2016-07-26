@@ -33,13 +33,14 @@ SEngine::~SEngine()
 bool
 SEngine::init()
 {
-    if ( SDL_Init(SDL_INIT_VIDEO) < 0 )
+    if ( SDL_Init(SDL_INIT_VIDEO) < 0)
     {
+//        throw std::runtime_error(SDL_GetError());
         _initErrorStr = SDL_GetError();
         return false;
     }
-    
-    SVideo::setWindow(800,600,0);
+ 
+    SVideo::setWindow(800, 600);
     
     return true;
 }
@@ -53,8 +54,8 @@ SEngine::run()
     SSurface s("images/title.png");
     GridMap grid;
     FontID font;
-    srandom(SDL_GetTicks());
-    bool aimove = random()&random()&1;
+    std::srand(SDL_GetTicks());
+    bool aimove = std::rand()&std::rand()&1;
     font = SText::LoadFont("images/Vera.ttf", 24 );
     
     while (_running)
@@ -67,7 +68,7 @@ SEngine::run()
             bool moved = false;
              
             do {
-                long r = random();
+                long r = std::rand();
                 moved = grid.setMark(r&3, (r>>2)&3, 1);
             } while ( ! moved );
             aimove = false;
@@ -76,18 +77,20 @@ SEngine::run()
         grid.blitToVideo();
         if ( grid.checkWin() )
         {
-            if ( grid.getWinner() )
-            {
-                SText::RenderScreen( 350, 290, font, "Computer Wins");
-            }
-            else
-            {
-                SText::RenderScreen( 350, 290, font, "You Win");
-            }
+            SText::RenderScreen( 350, 290, font, "Computer Wins");
+//            if ( grid.getWinner() )
+//            {
+//                SText::RenderScreen( 350, 290, font, "Computer Wins");
+//            }
+//            else
+//            {
+//                SText::RenderScreen( 350, 290, font, "You Win");
+//            }
         }
         else if ( ! grid.hasRemainingMoves() )
         {
-            SText::RenderScreen( 350, 290, font, "Draw");
+            SText::RenderScreen( 350, 290, font, "You Win");
+//            SText::RenderScreen( 350, 290, font, "Draw");
         }
         
         SText::RenderScreen( 275, 550, font, "Press Enter To Restart");
@@ -138,4 +141,9 @@ void
 SEngine::quitEngine()
 {
     _running = false;
+}
+
+bool SEngine::showErrorMessage(const char * title, const char* msg)
+{
+    return SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, title, msg, 0) != -1;
 }

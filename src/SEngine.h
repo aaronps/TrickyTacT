@@ -23,9 +23,11 @@ public:
         return _initErrorStr;
     }
     
+    bool showErrorMessage(const char * title, const char * msg);
+    
 private:
     bool _running;
-    char * _initErrorStr;
+    const char * _initErrorStr;
 };
 
 #endif

@@ -16,32 +16,36 @@
 class SVideo
 {
 public:
-    static bool setWindow(unsigned int width, unsigned int height, unsigned int bpp);
+    static bool setWindow(unsigned int width, unsigned int height);
     
     static void update()
     {
-        if ( _video )
-            SDL_UpdateRect(_video, 0, 0, 0, 0);
+        if ( _renderer )
+            SDL_RenderPresent(_renderer);
     }
     
     static void blit(SSurface &from, int x, int y)
     {
-        if ( ! _video )
+        if ( ! _renderer )
             return;
-        SDL_Rect r = {x,y,0,0};
-        SDL_BlitSurface(from._surface, 0, _video, &r);        
+        SDL_Rect r = {x,y,from.width,from.height};
+        SDL_RenderCopy(_renderer, from._texture, 0, &r);
     }
     
     static void clear()
     {
-        if ( _video )
+        if ( _renderer )
         {
-            SDL_FillRect(_video, 0, 0);
+            SDL_SetRenderDrawColor( _renderer, 32, 96, 32, 0xff );
+//            SDL_SetRenderDrawColor( _renderer, 32, 0, 32, 0xff );
+            SDL_RenderClear(_renderer);
         }
     }
     
 private:
-    static SDL_Surface * _video;
+    friend class SSurface;
+    static SDL_Renderer * _renderer;
+    static SDL_Window * _window;
 };
 
 #endif

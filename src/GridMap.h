@@ -17,10 +17,10 @@ class GridMap
 {
 public:
     GridMap()
-        : _grid("images/grid.png"),
+        : _remaining_moves(9),
+          _grid("images/grid.png"),
           _circle("images/o.png"),
           _ex("images/x.png"),
-          _remaining_moves(9),
           _winner(0)
     {
         memset(_map, 0, sizeof(_map));
