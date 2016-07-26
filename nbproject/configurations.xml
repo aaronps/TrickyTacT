@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="src" displayName="src" projectFiles="true">
+      <itemPath>src/GridMap.cpp</itemPath>
+      <itemPath>src/GridMap.h</itemPath>
+      <itemPath>src/SEngine.cpp</itemPath>
+      <itemPath>src/SEngine.h</itemPath>
+      <itemPath>src/SSurface.cpp</itemPath>
+      <itemPath>src/SSurface.h</itemPath>
+      <itemPath>src/SText.cpp</itemPath>
+      <itemPath>src/SText.h</itemPath>
+      <itemPath>src/SVideo.cpp</itemPath>
+      <itemPath>src/SVideo.h</itemPath>
+      <itemPath>src/main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>src</pElem>
+            <pElem>../../libs/SDL2-2.0.3/include</pElem>
+            <pElem>../../libs/SDL2_ttf-2.0.12/x86_64-w64-mingw32/include/SDL2</pElem>
+            <pElem>../../libs/SDL2_image-2.0.0/x86_64-w64-mingw32/include/SDL2</pElem>
+          </incDir>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../../libs/SDL2-2.0.3/x86_64-w64-mingw32/lib</pElem>
+            <pElem>../../libs/SDL2_image-2.0.0/x86_64-w64-mingw32/lib</pElem>
+            <pElem>../../libs/SDL2_ttf-2.0.12/x86_64-w64-mingw32/lib</pElem>
+          </linkerAddLib>
+          <commandLine>-lSDL2_ttf -lSDL2_image -lSDL2</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="src/GridMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/GridMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SEngine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SEngine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SSurface.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SSurface.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SText.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SText.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SVideo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SVideo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="src/GridMap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/GridMap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SEngine.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SEngine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SSurface.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SSurface.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SText.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SText.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/SVideo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/SVideo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
